@@ -1,0 +1,25 @@
+{
+  "name": "water-ma",
+  "description": "The control panel for the people who look after water resources",
+  "main": "index.js",
+  "authors": [
+    "Rubachev Ivan"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "water",
+    "monitoring",
+    "control",
+    "angular",
+    "javascript"
+  ],
+  "homepage": "https://github.com/rubachevivan/water-ma#readme",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

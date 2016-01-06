@@ -1,0 +1,26 @@
+{
+  "name": "water-ma",
+  "version": "1.0.0",
+  "description": "The control panel for the people who look after water resources",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubachevivan/water-ma.git"
+  },
+  "keywords": [
+    "water",
+    "monitoring",
+    "control",
+    "angular",
+    "javascript"
+  ],
+  "author": "Rubachev Ivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rubachevivan/water-ma/issues"
+  },
+  "homepage": "https://github.com/rubachevivan/water-ma#readme"
+}
