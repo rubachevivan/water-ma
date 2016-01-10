@@ -1,1 +1,1 @@
-body{background-image:-webkit-linear-gradient(bottom,red 20%,green 40%);background-image:linear-gradient(to top,red 20%,green 40%);background-repeat:no-repeat;width:90%;height:600px;color:#fff;padding-bottom:20px;margin:5px auto;font:1.5em/1.5 normal Helvetica,Arial,sans-serif}p{text-shadow:4px 4px 5px rgba(0,0,0,.5)}
+*{margin:0;padding:0}body{font-family:"Open Sans",sans-serif}nav{width:100%;background-color:#2980b9}nav a{text-decoration:none;color:#fff}nav>a{float:left;margin-right:3em}

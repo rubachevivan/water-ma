@@ -1,0 +1,23 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   font-family: "Open Sans", sans-serif;
+}
+
+nav {
+   width: 100%;
+   background-color: rgb(41, 128, 185);
+}
+
+nav a {
+   text-decoration: none;
+   color: white;
+}
+
+nav > a {
+   float: left;
+   margin-right: 3em;
+}
