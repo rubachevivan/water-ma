@@ -1,0 +1,86 @@
+/*full with navbar with with shadow*/
+
+nav {
+   width: 100%;
+   top:0;
+   height: 3em;
+   background-color: rgb(5,128,173);
+   box-shadow: 0px 2px 4px rgba(52, 73, 94, 0.7);
+   position: fixed;
+}
+
+/*global style for navigation ancer tags removing bottom line*/
+
+nav a {
+   text-decoration: none;
+   font-size: 0.8em;
+   color: rgb(236, 240, 241);
+}
+
+/*navbar logo styles*/
+
+nav a.logo {
+   font: 1.5em/2em normal "Open Sans", Helvetica, Arial, sans-serif;
+   float: left;
+   margin: 0 0.5em 0 0.5em;
+   /*border-right: 2px solid rgba(236, 240, 241, .6);*/
+}
+nav a.logo span {
+   font-weight: lighter;
+}
+nav li {
+   list-style: none;
+   float: left;
+}
+nav li a {
+   display: inline-block;
+   text-align: center;
+   line-height: 3.8em;
+   width: 8em;
+   transition: 0.2s;
+}
+nav li a:hover {
+   background-color: rgb(25,160,193);
+}
+nav a.active {
+   background-color: rgb(25,160,193);
+}
+.show-menu {
+   float: right;
+   color: rgb(255, 255, 255);
+   background-color: rgb(25,160,193);
+   margin: 0.7em 1em 0 0;
+   padding: 0.6em;
+   font-size: 0.8em;
+   transition: 0.2s;
+   border-radius: 0.3em;
+   cursor: pointer;
+   display: none;
+}
+
+nav input[type="checkbox"] {
+   display: none;
+}
+nav input[type=checkbox]:checked ~ #menu {
+   display: block;
+}
+@media screen and (max-width: 760px) {
+   #menu {
+      display: none;
+      padding: 0;
+   }
+   nav li {
+      display: block;
+      width: 100%;
+   }
+   nav ul li a {
+      box-sizing: border-box;
+      width: 100%;
+      text-align: left;
+      background-color: rgb(5,128,173);
+      padding-left: 0.5em;
+   }
+   .show-menu {
+      display: block;
+   }
+}

@@ -1,0 +1,24 @@
+section {
+   margin-top: 3.5em;
+}
+
+.widget {
+   background-color: rgba(255,255,250,.2);
+   height: 20em;
+   /*margin: 10px;*/
+   box-shadow: 0 0 10px 1px rgba(20,20,20,.3);
+}
+
+.widget .header {
+   background-color: rgb(21,198,163);
+   height: 3em;
+   /*margin: -10px;*/
+}
+
+.widget h3 {
+   font-size: 1.2em;
+   font-weight: 300;
+   color: white;
+   line-height: 2.5em;
+   padding-left: 0.5em;
+}
