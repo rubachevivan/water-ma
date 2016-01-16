@@ -40,12 +40,17 @@ nav li a {
    width: 8em;
    transition: 0.2s;
 }
+
+/*on hover and active styles*/
 nav li a:hover {
    background-color: rgb(25, 118, 210);
 }
 nav a.active {
    background-color: rgb(25, 118, 210);
 }
+/*making that menu responsive*/
+
+/*style for the button*/
 .show-menu {
    float: right;
    color: rgb(255, 255, 255);
@@ -59,12 +64,16 @@ nav a.active {
    display: none;
 }
 
+/*hide checkbox*/
 nav input[type="checkbox"] {
    display: none;
 }
+
+/*when checkbox is checked ul with id menu displays as block element*/
 nav input[type=checkbox]:checked ~ #menu {
    display: block;
 }
+/*for screens with size less than 760px*/
 @media screen and (max-width: 760px) {
    #menu {
       display: none;
@@ -82,6 +91,7 @@ nav input[type=checkbox]:checked ~ #menu {
       padding-left: 0.5em;
       box-shadow: 0 4px 5px rgba(0,0,0,.4);
    }
+   /*show button other styles on top*/
    .show-menu {
       display: block;
    }
