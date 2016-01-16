@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="waterApp">
 
 <head>
    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
    <title>Мониторинг</title>
-   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
    <!-- build:css styles/main.css -->
    <link rel="stylesheet" href="styles/reset.css">
    <link rel="stylesheet" href="styles/global.css">
    <link rel="stylesheet" href="styles/grid.css">
    <link rel="stylesheet" href="styles/header.css">
    <link rel="stylesheet" href="styles/app.css">
+   <link rel="stylesheet" href="../bower_components/angular-chart.js/dist/angular-chart.css">
    <!-- endbuild -->
 </head>
 
-<body>
+<body ng-controller="DashboardController">
    <nav>
       <a class="logo" href="#">Качество<span>Воды</span></a>
       <label for="show-menu" class="show-menu">Меню</label>
@@ -35,14 +36,20 @@
 
             <div class="col-1-2 widget">
                <div class="header">
-                  <h3>Some text</h3>
+                  <h3>Химические параметры</h3>
                </div>
-
+               <div class="content">
+                  <canvas id="chemChart" class="chart chart-bar" chart-data="chemdata" chart-labels="chemlabels" chart-series="chemseries" chart-colours="colors"></canvas>
+                  <p>Водородный показатель в норме</p>
+               </div>
             </div>
 
             <div class="col-1-2 widget">
                <div class="header">
-                  <h3>Other text</h3>
+                  <h3>Радиоционные параметры</h3>
+               </div>
+               <div class="content">
+                  <canvas id="epidChart" class="chart chart-doughnut" chart-data="epiddata" chart-labels="epidlabels" chart-colours="colors"></canvas>
                </div>
             </div>
 
@@ -53,13 +60,16 @@
 
             <div class="col-2-3 widget">
                <div class="header">
-                  <h3>Third title</h3>
+                  <!-- <h3>Органолептические свойства</h3> -->
                </div>
+                  <!-- <p>Состояние воды: хорошее</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt recusandae vero ex quisquam distinctio, dolores nesciunt, odio at obcaecati quia ullam alias. Nulla, consequatur vel alias voluptatum eligendi omnis, sed.
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit voluptatibus mollitia est vero at consequatur unde possimus dolor obcaecati, consectetur, dolorum velit nulla suscipit necessitatibus eos, eius assumenda? Nulla, in.</p> -->
             </div>
 
             <div class="col-1-3 widget">
                <div class="header">
-                  <h3>Something</h3>
+                  <h3>Температура воды и воздуха</h3>
                </div>
             </div>
 
@@ -71,5 +81,11 @@
 
    </footer>
 </body>
-
+<!-- build:js scripts/app.js -->
+<script src="../node_modules/angular/angular.min.js"></script>
+<script src="../bower_components/Chart.js/Chart.js"></script>
+<script src="../bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers.js"></script>
+<!-- endbuild -->
 </html>

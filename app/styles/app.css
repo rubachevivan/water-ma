@@ -1,24 +1,38 @@
+/*main content of the info page*/
 section {
    margin-top: 3.5em;
 }
 
+/*one dashboard widget*/
 .widget {
    background-color: rgba(255,255,250,.2);
-   height: 20em;
-   /*margin: 10px;*/
+   min-height: 20em;
    box-shadow: 0 0 10px 1px rgba(20,20,20,.3);
 }
-
+/*widget insights*/
 .widget .header {
-   background-color: rgb(21,198,163);
+   background-color: rgb(124, 77, 255);
    height: 3em;
-   /*margin: -10px;*/
+   box-shadow: 0 2px 4px rgba(0,0,0,.2)
 }
-
+.widget .content {
+   padding: 1em 0.5em 0.5em 0.5em;
+}
+/*graphs fix*/
+.widget .content canvas {
+   height: 50%;
+}
+/*text styling*/
 .widget h3 {
+   overflow: visible;
    font-size: 1.2em;
    font-weight: 300;
-   color: white;
+   color: rgb(255,255,255);
    line-height: 2.5em;
    padding-left: 0.5em;
+}
+
+.widget p {
+   padding: 0.5em;
+   color: #4CAF50;
 }

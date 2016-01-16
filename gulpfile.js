@@ -3,6 +3,7 @@
 var gulp = require('gulp'),
    minifycss = require('gulp-minify-css'),
    autoprefixer = require('gulp-autoprefixer'),
+   ngannotate = require('gulp-ng-annotate'),
    jshint = require('gulp-jshint'),
    stylish = require('jshint-stylish'),
    uglify = require('gulp-uglify'),
@@ -35,7 +36,7 @@ gulp.task('usemin', ['jshint'], function() {
    return gulp.src('./app/index.html')
       .pipe(usemin({
          css: [autoprefixer(), minifycss(), rename({suffix: '.min'})],
-         js: [uglify(), rename({suffix: '.min'})]
+         js: [ngannotate(), uglify(), rename({suffix: '.min'})]
       }))
       .pipe(gulp.dest('dist/'));
 });

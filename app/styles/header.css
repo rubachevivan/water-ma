@@ -4,9 +4,10 @@ nav {
    width: 100%;
    top:0;
    height: 3em;
-   background-color: rgb(5,128,173);
+   background-color: rgb(33, 150, 243);
    box-shadow: 0px 2px 4px rgba(52, 73, 94, 0.7);
    position: fixed;
+   z-index: 999;
 }
 
 /*global style for navigation ancer tags removing bottom line*/
@@ -20,13 +21,13 @@ nav a {
 /*navbar logo styles*/
 
 nav a.logo {
-   font: 1.5em/2em normal "Open Sans", Helvetica, Arial, sans-serif;
+   font: 1.5em/2em 'Roboto', Helvetica, Arial, sans-serif;
    float: left;
    margin: 0 0.5em 0 0.5em;
    /*border-right: 2px solid rgba(236, 240, 241, .6);*/
 }
 nav a.logo span {
-   font-weight: lighter;
+   font-weight: 100;
 }
 nav li {
    list-style: none;
@@ -40,15 +41,15 @@ nav li a {
    transition: 0.2s;
 }
 nav li a:hover {
-   background-color: rgb(25,160,193);
+   background-color: rgb(25, 118, 210);
 }
 nav a.active {
-   background-color: rgb(25,160,193);
+   background-color: rgb(25, 118, 210);
 }
 .show-menu {
    float: right;
    color: rgb(255, 255, 255);
-   background-color: rgb(25,160,193);
+   background-color: rgb(25, 118, 210);
    margin: 0.7em 1em 0 0;
    padding: 0.6em;
    font-size: 0.8em;
@@ -77,8 +78,9 @@ nav input[type=checkbox]:checked ~ #menu {
       box-sizing: border-box;
       width: 100%;
       text-align: left;
-      background-color: rgb(5,128,173);
+      background-color: rgb(33, 150, 243);
       padding-left: 0.5em;
+      box-shadow: 0 4px 5px rgba(0,0,0,.4);
    }
    .show-menu {
       display: block;
