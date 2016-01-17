@@ -30,9 +30,13 @@ gulp.task('clean', function() {
    return del(['dist']);
 });
 
+gulp.task('copy', function() {
+   return gulp.src('./app/views/**/*.html')
+      .pipe(gulp.dest('dist/views/'));
+})
 
 
-gulp.task('usemin', ['jshint'], function() {
+gulp.task('usemin', ['jshint', 'copy'], function() {
    return gulp.src('./app/index.html')
       .pipe(usemin({
          css: [autoprefixer(), minifycss(), rename({suffix: '.min'})],
