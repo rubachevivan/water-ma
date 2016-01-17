@@ -16,7 +16,7 @@
 
 Для запуска приложения на своём компьютере необходимо
 
-- Установиить git и NodeJS
-- Клонировать репозитори: *git clone url.to/this/repository*
-- В консоли использовать комманды: *npm install, bower install*
-- Использовать кооманду gulp watch
+- Установиить: *Git и NodeJS*
+- Клонировать репозитори: *git clone link.to/this/repository*
+- В консоли использовать команды: *npm install, bower install*
+- Использовать команду: *gulp watch*
