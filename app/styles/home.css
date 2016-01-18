@@ -1,0 +1,57 @@
+header {
+   overflow: hidden;
+}
+
+section {
+   margin-top: 0;
+}
+
+.image {
+   height: 20em;
+   background-image: url(../images/header.jpg);
+   background-position: 0em -31em;
+   filter: blur(6px);
+   transform: scale(1.1);
+   margin-bottom: -0.5em;
+}
+
+header h1 {
+   color: white;
+   font-weight: 300;
+}
+font-size: 2em;
+
+@media screen and (max-width: 760px) {
+   header h1 {
+      font-size: 1.5em;
+      top: 3em;
+   }
+}
+
+.caption {
+   position: absolute;
+   top: 3.5em;
+   left: 1.5em;
+}
+
+.home-container {
+   margin: 1em 1em 0 1em;
+}
+
+.home-container h1 {
+   font-weight: 300;
+}
+
+div.conditions {
+   padding: 1em;
+   box-sizing: border-box;
+   min-height: 15em;
+   background-color: lightgreen;
+}
+
+div.temperature {
+   padding: 1em;
+   box-sizing: border-box;
+   min-height: 15em;
+   background-color: lightblue;
+}

@@ -12,7 +12,7 @@
 
 /*grid*/
 .container {
-   padding: 0 20px;
+   padding: 4em 20px;
 }
 /* grid */
 [class*="row-"] {

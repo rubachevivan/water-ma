@@ -30,13 +30,16 @@ gulp.task('clean', function() {
    return del(['dist']);
 });
 
+gulp.task('clearcache', function() {
+   cache.clearAll();
+});
+
 gulp.task('copy', function() {
    return gulp.src('./app/views/**/*.html')
       .pipe(gulp.dest('dist/views/'));
-})
+});
 
-
-gulp.task('usemin', ['jshint', 'copy'], function() {
+gulp.task('usemin', ['jshint', 'copy', 'imagemin'], function() {
    return gulp.src('./app/index.html')
       .pipe(usemin({
          css: [autoprefixer(), minifycss(), rename({suffix: '.min'})],
@@ -49,7 +52,7 @@ gulp.task('usemin', ['jshint', 'copy'], function() {
 gulp.task('imagemin', function() {
    return del(['dist/images']), gulp.src('app/images/**/*')
       .pipe(cache(imagemin({
-         optimizationLevel: 3,
+         optimizationLevel: 7,
          progressive: true,
          interlaced: true
       })))

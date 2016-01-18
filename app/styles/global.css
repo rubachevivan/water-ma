@@ -2,6 +2,10 @@ body {
    font-family: 'Roboto', sans-serif;
 }
 
+section {
+   margin-top: 3.5em;
+}
+
 h1 {
    font-size: 1.8em;
 }
