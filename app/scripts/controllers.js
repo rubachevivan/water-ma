@@ -1,3 +1,4 @@
+"use strict";
 angular.module('waterApp')
    .controller('DashboardController', function($scope) {
       $scope.chemlabels = ['pH', 'pH', 'pH', 'pH', 'pH', 'pH', 'pH'];
