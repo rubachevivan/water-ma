@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var gulp = require('gulp'),
    minifycss = require('gulp-minify-css'),
