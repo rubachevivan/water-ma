@@ -4,29 +4,142 @@
          <div class="header">
             <h3>Вещество-1</h3>
          </div>
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt aliquam consequatur eius aperiam ullam libero magnam dolore placeat doloribus eligendi culpa blanditiis molestias in, delectus enim inventore animi provident vel?</p>
+         <div class="content">
+            <form>
+               <label>Содержание, %:</label>
+               <input type="range" class="range">
+               <label>Комментарий</label>
+               <input type="text">
+               <button type="submit">Отправить</button>
+            </form>
+         </div>
       </div>
       <div class="col-1-2 widget">
          <div class="header">
-            <h3>Вещество-2</h3>
+            <h3>Нефтепродукты</h3>
          </div>
-         <form>
-            <label for="sender">Комментарий</label>
-            <input id="sender" type="text">
-            <label for="number">Число</label>
-            <input id="number" type="number">
-            <label for="range">ПДК</label>
-            <input id="range" type="range">
-            <button type="submit">Отправить</button>
-         </form>
+         <div class="content">
+            <form>
+               <label>Содержание, %:</label>
+               <input type="range" class="range">
+               <label>Комментарий:</label>
+               <input type="text">
+               <button type="submit">Отправить</button>
+            </form>
+         </div>
       </div>
    </div>
-   <div class="row-2 clearfix">
-      <div class="col-2-3 widget">
-         <div class="header">
-            <h3>Органолептические х-ки</h3>
+   <div class="widget">
+      <div class="header">
+         <h3>Органолептические хар-ки</h3>
+      </div>
+      <div class="content">
+         <div class="input-group">
+            <h4>Запах:</h4>
+            <label class="md-radio">
+               <input type="radio" name="smell">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Отсутствует
+            </label>
+
+            <label class="md-radio">
+               <input type="radio" name="smell">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Слабый
+            </label>
+
+            <label class="md-radio">
+               <input type="radio" name="smell">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Сильный
+            </label>
          </div>
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat natus repellendus quae veritatis cumque nesciunt vel maiores repellat minima, deleniti quasi, aperiam sit nostrum itaque labore sunt voluptates a illo.</p>
+         <div class="input-group">
+            <h4>Привкус:</h4>
+            <label class="md-radio">
+               <input type="radio" name="taste">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Отсутствует
+            </label>
+
+            <label class="md-radio">
+               <input type="radio" name="taste">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Слабый
+            </label>
+
+            <label class="md-radio">
+               <input type="radio" name="taste">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Сильный
+            </label>
+         </div>
+         <div class="input-group">
+            <h4>Цветность:</h4>
+            <label class="md-radio">
+               <input type="radio" name="color">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               В норме
+            </label>
+
+            <label class="md-radio">
+               <input type="radio" name="color">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Опасно
+            </label>
+
+            <label class="md-radio">
+               <input type="radio" name="color">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Критично
+            </label>
+
+         </div>
+         <div class="input-group">
+            <h4>Мутность:</h4>
+            <label class="md-radio">
+               <input type="radio" name="mutn">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Прозрачная
+            </label>
+
+            <label class="md-radio">
+               <input type="radio" name="mutn">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Почти прозрачная
+            </label>
+
+            <label class="md-radio">
+               <input type="radio" name="mutn">
+               <span class="md-radio--fake">
+                  <span></span>
+               </span>
+               Мутная
+            </label>
+         </div>
+         <button type="submit">Отправить</button>
       </div>
    </div>
 </div>

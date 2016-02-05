@@ -43,7 +43,8 @@ gulp.task('usemin', ['jshint', 'copy', 'imagemin'], function() {
    return gulp.src('./app/index.html')
       .pipe(usemin({
          css: [autoprefixer(), minifycss(), rename({suffix: '.min'})],
-         js: [ngannotate(), uglify(), rename({suffix: '.min'})]
+         js: [ngannotate(), uglify(), rename({suffix: '.min'})],
+         libs: []
       }))
       .pipe(gulp.dest('dist/'));
 });

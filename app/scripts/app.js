@@ -1,5 +1,5 @@
 "use strict";
-angular.module('waterApp', ['chart.js', 'ui.router'])
+var app = angular.module('waterApp', ['ui.router', 'water.controllers', 'water.services'])
    .config(function($stateProvider, $urlRouterProvider) {
       $stateProvider
          .state('app', {

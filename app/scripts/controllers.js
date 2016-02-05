@@ -1,6 +1,6 @@
 "use strict";
-angular.module('waterApp')
-   .controller('DashboardController', function($scope) {
+angular.module('water.controllers', ['chart.js'])
+   .controller('DashboardController', ['$scope', function($scope){
       $scope.chemlabels = ['pH', 'pH', 'pH', 'pH', 'pH', 'pH', 'pH'];
       $scope.chemseries = ['Series A', 'Series B'];
       $scope.colors = ['#00BCD4', '#303F9F'];
@@ -12,4 +12,5 @@ angular.module('waterApp')
 
       $scope.epidlabels = ["Бактерии-2", "Бактерии-1"];
       $scope.epiddata = [300, 500];
-   });
+      
+}]);
