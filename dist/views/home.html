@@ -20,7 +20,12 @@
          <div class="header">
             <h3>Температура</h3>
          </div>
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur iure officiis amet tempore obcaecati eos praesentium quia illo nemo, laborum autem magnam placeat temporibus eveniet, doloribus, fuga voluptas veritatis vero.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci itaque reprehenderit eligendi, doloremque molestiae voluptas quisquam id laboriosam aliquid distinctio tenetur qui, fuga autem error, nulla totam aliquam exercitationem voluptate.</p>
+         <div class="content">
+            <div class="weather">
+               <i ng-class="weathericon"><span>{{temperature}}&#176</span></i>
+               <p>{{city}}</p>
+            </div>
+         </div>
       </div>
    </div>
    <div class="widget">

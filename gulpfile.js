@@ -39,15 +39,21 @@ gulp.task('copy', function() {
       .pipe(gulp.dest('dist/views/'));
 });
 
-gulp.task('usemin', ['jshint', 'copy', 'imagemin'], function() {
+gulp.task('usemin', ['jshint', 'copy', 'imagemin', 'copyfonts'], function() {
    return gulp.src('./app/index.html')
       .pipe(usemin({
          css: [autoprefixer(), minifycss(), rename({suffix: '.min'})],
          js: [ngannotate(), uglify(), rename({suffix: '.min'})],
-         libs: []
+         libs: [],
+         extcss: []
       }))
       .pipe(gulp.dest('dist/'));
 });
+
+gulp.task('copyfonts', function() {
+   return gulp.src('./app/font/**')
+      .pipe(gulp.dest('dist/font'));
+})
 
 // Images
 gulp.task('imagemin', function() {

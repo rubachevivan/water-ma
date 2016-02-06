@@ -9,7 +9,8 @@ var app = angular.module('waterApp', ['ui.router', 'water.controllers', 'water.s
                   templateUrl: 'views/header.html'
                },
                'content': {
-                  templateUrl: 'views/home.html'
+                  templateUrl: 'views/home.html',
+                  controller: 'HomeController'
                }
             }
          })

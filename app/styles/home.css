@@ -78,3 +78,28 @@ header h1 {
    display: inline-block;
    padding: 0.5em 0 0 0.5em;
 }
+
+.widget .weather {
+   text-align: center;
+}
+
+i {
+   font-size: 120px;
+   color:  rgb(124, 77, 255);
+}
+
+i span {
+   margin-left: 20px;
+   color: black;
+   font-family: Roboto;
+   font-size: 1.2em;
+}
+
+.widget .weather p {
+   margin-top: 20px;
+   font-size: 30px;
+}
+
+.widget .weather p:first-letter {
+   text-transform: capitalize;
+}

@@ -1,7 +1,7 @@
 "use stritct";
 
-angular.module('water.services', [])
-   .service('weatherService', function() {
-
-   })
+angular.module('water.services', ['ngResource'])
+   .factory('WeatherFactory', [ '$resource', function( $resource) {
+      
+   }])
 ;
