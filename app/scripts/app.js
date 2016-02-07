@@ -2,7 +2,7 @@
 var app = angular.module('waterApp', ['ui.router', 'water.controllers', 'water.services'])
    .config(function($stateProvider, $urlRouterProvider) {
       $stateProvider
-         .state('app', {
+         .state('home', {
             url: '/',
             views: {
                'header': {
@@ -15,20 +15,26 @@ var app = angular.module('waterApp', ['ui.router', 'water.controllers', 'water.s
             }
          })
 
-         .state('app.info', {
-            url: 'information',
+         .state('dashboard', {
+            url: '/dashboard',
             views: {
-               'content@': {
+               'header': {
+                  templateUrl: 'views/header.html'
+               },
+               'content': {
                   templateUrl: 'views/information.html',
                   controller: 'DashboardController'
                }
             }
          })
 
-         .state('app.send', {
-            url: 'send',
+         .state('send', {
+            url: '/send',
             views: {
-               'content@': {
+               'header': {
+                  templateUrl: 'views/header.html'
+               },
+               'content': {
                   templateUrl: 'views/send.html'
                }
             }
