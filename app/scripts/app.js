@@ -1,5 +1,8 @@
 "use strict";
-var app = angular.module('waterApp', ['ui.router', 'water.controllers', 'water.services'])
+var app = angular.module('waterApp', ['ui.router', 'ngResource', 'chart.js'])
+   .constant("fb", {
+      url: "https://waterma.firebaseio.com/"
+   })
    .config(function($stateProvider, $urlRouterProvider) {
       $stateProvider
          .state('home', {
@@ -11,6 +14,16 @@ var app = angular.module('waterApp', ['ui.router', 'water.controllers', 'water.s
                'content': {
                   templateUrl: 'views/home.html',
                   controller: 'HomeController'
+               }
+            }
+         })
+
+         .state('post', {
+            url: '/newspost/:id',
+            views: {
+               'content': {
+                  templateUrl: 'views/post.html',
+                  controller: 'PostController'
                }
             }
          })

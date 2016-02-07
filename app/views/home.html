@@ -34,20 +34,10 @@
       </div>
       <div class="content">
          <ul class="medialist">
-            <li>
-               <h3>Hello world</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, vero, rerum asperiores illum, natus eligendi non temporibus vitae pariatur maxime inventore assumenda, laudantium repudiandae? Aliquam, recusandae aperiam error autem voluptatem? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga voluptatem vel quod explicabo nam deserunt suscipit dolorem assumenda aliquam blanditiis, inventore odit error ab aliquid similique est nostrum dolores perspiciatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nam omnis, maxime, ut earum perferendis eos enim repellendus saepe veniam accusantium voluptas voluptate dicta nisi. Error voluptate tempora temporibus. Excepturi?</p>
-               <a href="/">читать</a>
-            </li>
-            <li>
-               <h3>Hello new world</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, vero, rerum asperiores illum, natus eligendi non temporibus vitae pariatur maxime inventore assumenda, laudantium repudiandae? Aliquam, recusandae aperiam error autem voluptatem? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga voluptatem vel quod explicabo nam deserunt suscipit dolorem assumenda aliquam blanditiis, inventore odit error ab aliquid similique est nostrum dolores perspiciatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nam omnis, maxime, ut earum perferendis eos enim repellendus saepe veniam accusantium voluptas voluptate dicta nisi. Error voluptate tempora temporibus. Excepturi?</p>
-               <a href="#123">читать</a>
-            </li>
-            <li>
-               <h3>Hello another world</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, vero, rerum asperiores illum, natus eligendi non temporibus vitae pariatur maxime inventore assumenda, laudantium repudiandae? Aliquam, recusandae aperiam error autem voluptatem? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga voluptatem vel quod explicabo nam deserunt suscipit dolorem assumenda aliquam blanditiis, inventore odit error ab aliquid similique est nostrum dolores perspiciatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nam omnis, maxime, ut earum perferendis eos enim repellendus saepe veniam accusantium voluptas voluptate dicta nisi. Error voluptate tempora temporibus. Excepturi?</p>
-               <a href="#123">читать</a>
+            <li ng-repeat="post in posts">
+               <h3>{{post.name}}</h3>
+               <p>{{post.content}}</p>
+               <a ui-sref="post({id: post.id})">читать</a>
             </li>
          </ul>
       </div>

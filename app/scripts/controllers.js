@@ -1,20 +1,28 @@
 "use strict";
-angular.module('water.controllers', ['chart.js', 'water.services', 'ngResource'])
-   .controller('DashboardController', ['$scope', function($scope) {
-      $scope.chemlabels = ['pH', 'pH', 'pH', 'pH', 'pH', 'pH', 'pH'];
-      $scope.chemseries = ['Series A', 'Series B'];
-      $scope.colors = ['#00BCD4', '#303F9F'];
-      $scope.chemdata = [
-         [650, 590, 800, 810, 560, 550, 400],
-         [280, 480, 400, 190, 860, 270, 900]
-      ];
+app.controller('DashboardController', ['$scope',
+      function($scope) {
+         $scope.chemlabels = ['pH', 'pH', 'pH', 'pH', 'pH', 'pH', 'pH'];
+         $scope.chemseries = ['Series A', 'Series B'];
+         $scope.colors = ['#00BCD4', '#303F9F'];
+         $scope.chemdata = [
+            [650, 590, 800, 810, 560, 550, 400],
+            [280, 480, 400, 190, 860, 270, 900]
+         ];
 
 
-      $scope.epidlabels = ["Бактерии-2", "Бактерии-1"];
-      $scope.epiddata = [300, 500];
+         $scope.epidlabels = ["Бактерии-2", "Бактерии-1"];
+         $scope.epiddata = [300, 500];
 
-   }])
-   .controller('HomeController', ['$scope', '$resource', function($scope, $resource) {
+      }
+   ])
+   .controller('HomeController', ['$scope', '$resource', 'newsFactory', function($scope, $resource, newsFactory) {
+      //
+      //
+      //
+      // Refering to weather API and loading basic weather widget with geolocation API
+      //
+      //
+      //
       $scope.showWeather = false;
       $scope.message = "Загрузка...";
       var latitude = 0,
@@ -36,7 +44,7 @@ angular.module('water.controllers', ['chart.js', 'water.services', 'ngResource']
 
                   var iconname = response.weather[0].icon;
 
-                  if(iconname[iconname.length - 1] == "n") $scope.weathericon = "wi wi-owm-night-" + response.weather[0].id;
+                  if (iconname[iconname.length - 1] == "n") $scope.weathericon = "wi wi-owm-night-" + response.weather[0].id;
                   else $scope.weathericon = "wi-owm-day-" + response.weather[0].id;
                   //alert("changed lat " + latitude +  " or lng " + longitude);
                },
@@ -44,11 +52,11 @@ angular.module('water.controllers', ['chart.js', 'water.services', 'ngResource']
                   $scope.message = "Error: " + response.status + " " + response.statusText;
                }
             );
-      };
+      }
 
       function errorHandler(error) {
          alert("error " + error.code + " " + error.message);
-      };
+      }
 
       var options = {
          enableHighAccuracy: true
@@ -62,16 +70,23 @@ angular.module('water.controllers', ['chart.js', 'water.services', 'ngResource']
          if ("geolocation" in navigator)
             navigator.geolocation.getCurrentPosition(getCurrentWeather, errorHandler, options);
          else alert("Your browser doesnt support geolocation");
-         $scope.$digest;
+         $scope.$digest();
       }, 1800000);
-      // WeatherFactory.getWeather().get()
-      //    .$promise.then(
-      //       function(response) {
-      //          $scope.temperature = Math.floor(response.main.temp - 273);
-      //          $scope.showWeather = true;
-      //       },
-      //       function(response) {
-      //          $scope.message = "Error: " + response.status + " " + response.statusText;
-      //       }
-      // );
-   }]);
+
+      //
+      //
+      //
+      // News Feed
+      //
+      //
+      //
+      $scope.posts = newsFactory.getAllPosts();
+   }])
+   //
+   // controller that operates with new data from send view
+   //
+   .controller('SendController', ['$scope', 'fb',
+      function($scope, fb) {
+
+   }])
+;
