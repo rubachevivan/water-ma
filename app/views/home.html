@@ -34,10 +34,10 @@
       </div>
       <div class="content">
          <ul class="medialist">
-            <li ng-repeat="post in posts">
+            <li ng-repeat="post in posts | orderBy: '-timestamp'">
                <h3>{{post.name}}</h3>
-               <p>{{post.content}}</p>
-               <a ui-sref="post({id: post.id})">читать</a>
+               <p>{{post.description}}</p>
+               <a href="#">читать</a>
             </li>
          </ul>
       </div>

@@ -1,7 +1,7 @@
 "use strict";
-var app = angular.module('waterApp', ['ui.router', 'ngResource', 'chart.js'])
+var app = angular.module('waterApp', ['ui.router', 'ngResource', 'firebase', 'chart.js'])
    .constant("fb", {
-      url: "https://waterma.firebaseio.com/"
+      url: "https://water-ma.firebaseio.com/"
    })
    .config(function($stateProvider, $urlRouterProvider) {
       $stateProvider

@@ -1,6 +1,6 @@
 "use strict";
-app.controller('DashboardController', ['$scope',
-      function($scope) {
+app.controller('DashboardController', ['$scope', 'newsFactory',
+      function($scope, newsFactory) {
          $scope.chemlabels = ['pH', 'pH', 'pH', 'pH', 'pH', 'pH', 'pH'];
          $scope.chemseries = ['Series A', 'Series B'];
          $scope.colors = ['#00BCD4', '#303F9F'];
@@ -12,6 +12,21 @@ app.controller('DashboardController', ['$scope',
 
          $scope.epidlabels = ["Бактерии-2", "Бактерии-1"];
          $scope.epiddata = [300, 500];
+
+         $scope.posts = newsFactory.getPosts();
+
+         $scope.addPost = function() {
+            $scope.posts.$add({
+               name: $scope.name,
+               description: $scope.description,
+               content: $scope.content,
+               timestamp: Firebase.ServerValue.TIMESTAMP
+            });
+
+            $scope.name = "";
+            $scope.description = "";
+            $scope.content = "";
+         }
 
       }
    ])
@@ -80,7 +95,20 @@ app.controller('DashboardController', ['$scope',
       //
       //
       //
-      $scope.posts = newsFactory.getAllPosts();
+      $scope.posts = newsFactory.getPosts();
+
+      $scope.addPost = function() {
+         $scope.posts.$add({
+            name: $scope.name,
+            description: $scope.description,
+            content: $scope.content,
+            timestamp: Firebase.ServerValue.TIMESTAMP
+         });
+
+         $scope.name = "";
+         $scope.description = "";
+         $scope.content = "";
+      }
    }])
    //
    // controller that operates with new data from send view

@@ -40,10 +40,26 @@
             <h3>Химические параметры</h3>
          </div>
          <div class="content">
-            
+
          </div>
       </div>
 
+   </div>
+   <div class="widget">
+      <div class="header">
+         <h3>Добавить новость<a class="addpost" ng-click="addPost()">+</a></h3>
+      </div>
+      <div class="content">
+         <form ng-submit="addPost()">
+            <label>Заголовок</label>
+            <input type="text" ng-model="name">
+            <label>Краткое описание</label>
+            <input type="text" ng-model="description">
+            <label>Текст новости</label>
+            <textarea ng-model="content"></textarea>
+            <input type="submit">
+         </form>
+      </div>
    </div>
 
 </div>
