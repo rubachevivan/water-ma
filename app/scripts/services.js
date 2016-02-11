@@ -7,8 +7,24 @@ app.factory('newsFactory', ['$firebaseArray', 'fb',
          news.getPosts = function() {
             var ref = new Firebase(fb.url + "news");
             return $firebaseArray(ref);
-         }
+         };
 
          return news;
       }
-   ])
+])
+.factory('dashboardFactory', ['$firebaseArray', 'fb',
+   function($firebaseArray, fb) {
+      var metrics = {};
+      metrics.getMetrics = function(param) {
+         var ref = new Firebase(fb.url + "metrics/" + param);
+         return $firebaseArray(ref);
+      };
+      metrics.getMetricsByWeek = function(param) {
+         var ref = new Firebase(fb.url + "metrics/" + param);
+         var query = ref.limitToLast(7);
+         return $firebaseArray(query);
+      };
+      return metrics;
+   }
+])
+;

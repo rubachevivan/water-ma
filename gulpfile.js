@@ -74,8 +74,7 @@ gulp.task('watch', ['browser-sync'], function() {
    // Watch .js files
    gulp.watch('{app/scripts/**/*.js,app/styles/**/*.css,app/**/*.html}', ['usemin']);
    // Watch image files
-   gulp.watch('app/images/**/*', ['imagemin']);
-
+   gulp.watch('app/images/**/*', ['imagemin']); 
 });
 
 gulp.task('browser-sync', ['default'], function() {
