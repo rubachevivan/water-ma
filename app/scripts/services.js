@@ -12,8 +12,8 @@ app.factory('newsFactory', ['$firebaseArray', 'fb',
          return news;
       }
 ])
-.factory('dashboardFactory', ['$firebaseArray', 'fb',
-   function($firebaseArray, fb) {
+.factory('dashboardFactory', ['$firebaseArray', '$firebaseObject', 'fb',
+   function($firebaseArray, $firebaseObject, fb) {
       var metrics = {};
       metrics.getMetrics = function(param) {
          var ref = new Firebase(fb.url + "metrics/" + param);
@@ -24,6 +24,10 @@ app.factory('newsFactory', ['$firebaseArray', 'fb',
          var query = ref.limitToLast(7);
          return $firebaseArray(query);
       };
+      metrics.getQuality = function() {
+         var ref = new Firebase(fb.url + "metrics/quality");
+         return $firebaseObject(ref);
+      }
       return metrics;
    }
 ])

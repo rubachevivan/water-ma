@@ -1,34 +1,21 @@
 <div class="home-container">
-   <div class="row-2 clearfix">
-      <div class="col-1-2 widget">
-         <div class="header">
-            <h3>Вещество-1</h3>
-         </div>
-         <div class="content">
-            <form>
-               <label>Содержание, %:</label>
-               <input type="range" class="range">
-               <label>Комментарий</label>
-               <input type="text">
-               <button type="submit">Отправить</button>
-            </form>
-         </div>
-      </div>
-      <div class="col-1-2 widget">
+      <div class="widget">
          <div class="header">
             <h3>Нефтепродукты</h3>
          </div>
          <div class="content">
             <form>
-               <label>Содержание, %:</label>
-               <input type="range" class="range">
+               <label>Содержание:
+                  <span class="rangeviz">{{oilcontents + "%"}}</span>
+               </label>
+               <input type="range" class="range" min="0" max="100" ng-model="oilcontents">
                <label>Комментарий:</label>
                <input type="text">
                <button type="submit">Отправить</button>
             </form>
          </div>
       </div>
-   </div>
+   <p style="padding-bottom: 20px"></p>
    <div class="widget">
       <div class="header">
          <h3>Органолептические хар-ки</h3>

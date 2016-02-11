@@ -1,12 +1,13 @@
 "use strict";
-app.controller('DashboardController', ['$scope', 'dashboardFactory', 'newsFactory',
-         function($scope, dashboardFactory, newsFactory) {
+app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory', 'newsFactory',
+         function($rootScope, $scope, dashboardFactory, newsFactory) {
             /*
              Adding new values
             */
 
             $scope.biolMetrics = dashboardFactory.getMetrics("biol");
             $scope.radMetrics = dashboardFactory.getMetrics("rad");
+            $scope.oilMetrics = dashboardFactory.getMetrics("oil");
 
             /*
                functions to emulate sensoric network work,
@@ -35,9 +36,13 @@ app.controller('DashboardController', ['$scope', 'dashboardFactory', 'newsFactor
                for this in services.js/dashboardFactory using special query
             */
 
-            //$scope.currentBiolMetrics = dashboardFactory.getBioByWeek();
-
-            function getChart(param) {
+            /*
+               to controll if one of the parameters is not good i use rootScope
+               if waterState is equal to 0 it means everything is ok when it is
+               equal to 1 - it means water quality is poor
+            */
+            $rootScope.waterState = {};
+            function getChart(param, maximum) {
                $scope[param + "Data"] = dashboardFactory.getMetricsByWeek(param);
                $scope[param + "Data"].$loaded()
                   .then(function() {
@@ -47,6 +52,7 @@ app.controller('DashboardController', ['$scope', 'dashboardFactory', 'newsFactor
                            $scope[param + "CurrentMetrics"] = [
                               []
                            ];
+                           $scope[param + "Message"] = "Показатели в норме.";
                            newValues.forEach(function(item, index, arr) {
                               var date = new Date(item.timestamp),
                                  day;
@@ -69,12 +75,23 @@ app.controller('DashboardController', ['$scope', 'dashboardFactory', 'newsFactor
                               $scope[param + "Labels"][index] = day + ", " + date.getDate();
                               $scope[param + "CurrentMetrics"][0][index] = item.contents;
                            });
+                           if($scope[param + "CurrentMetrics"][0][6] > maximum) {
+                                 var obj = dashboardFactory.getQuality();
+                                 obj.$value = 0;
+                                 obj.$save();
+                                 $scope[param + "Message"] = "Внимание!!! Концентрация превышена";
+                           } else {
+                                 var obj = dashboardFactory.getQuality();
+                                 obj.$value = 1;
+                                 obj.$save();
+                                 $scope[param + "Message"] = "Конценция в норме."
+                           }
                         });
                      })
             }
 
-            getChart("biol");
-            getChart("rad");
+            getChart("biol", 0);
+            getChart("rad", 0.1);
             //console.log($scope.radSeries);
 
 
@@ -96,12 +113,19 @@ app.controller('DashboardController', ['$scope', 'dashboardFactory', 'newsFactor
                $scope.content = "";
             };
          }])
-      .controller('HomeController', ['$scope', '$resource', 'newsFactory', function($scope, $resource, newsFactory) {
+      .controller('HomeController', ['$scope', '$resource', 'newsFactory', 'dashboardFactory', function($scope, $resource, newsFactory, dashboardFactory) {
          /*
             Refering to weather API and loading basic weather widget with geolocation API
             This code is not in the services.js because of asynchronous loading it is not
             showing weather if it loads it in services.js
          */
+         $scope.quality = dashboardFactory.getQuality();
+         $scope.quality.$loaded()
+            .then(function() {
+               $scope.$watch('quality', function(newVal, oldVal, scope) {
+                  $scope.waterState = newVal.$value;
+               });
+            });
          $scope.showWeather = false;
          $scope.message = "Загрузка...";
          var latitude = 0,

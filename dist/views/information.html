@@ -10,6 +10,7 @@
             <canvas id="barchart" class="chart chart-bar"
                chart-data="biolCurrentMetrics" chart-labels="biolLabels" chart-series="biolSeries">
             </canvas>
+            <p>{{biolMessage}}</p>
             <button ng-click="addGood('biol')">Good!</button>
             <button ng-click="addBad('biol')">Bad!</button>
          </div>
@@ -45,6 +46,7 @@
             <canvas class="chart chart-line"
                chart-data="radCurrentMetrics" chart-labels="radLabels" chart-series="radSeries">
             </canvas>
+            <p>{{radMessage}}</p>
             <button ng-click="addGood('rad')">Good!</button>
             <button ng-click="addBad('rad')">Bad!</button>
          </div>

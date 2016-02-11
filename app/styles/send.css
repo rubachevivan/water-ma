@@ -147,3 +147,9 @@ input[type=range].range:focus::-ms-fill-lower {
 input[type=range].range:focus::-ms-fill-upper {
   background: #9471d2;
 }
+label span.rangeviz {
+   color: #2196f3;
+   font-weight: bold;
+   font-family: Roboto;
+   float: right;
+}
