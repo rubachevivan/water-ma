@@ -48,7 +48,8 @@ var app = angular.module('waterApp', ['ui.router', 'ngResource', 'firebase', 'ch
                   templateUrl: 'views/header.html'
                },
                'content': {
-                  templateUrl: 'views/send.html'
+                  templateUrl: 'views/send.html',
+                  controller: 'SendController'
                }
             }
          });

@@ -12,10 +12,12 @@
             <h3>Качество воды</h3>
          </div>
          {{waterState}}
-         <div class="content badWater" ng-if="!waterState">
+         <div class="content badWater" ng-if="!waterState.biolQuality || !waterState.oilQuality
+                                              || !waterState.radQuality">
             <p>Осторожно! Сейчас воду пить опасно.</p>
          </div>
-         <div class="content goodWater" ng-if="waterState">
+         <div class="content goodWater" ng-if="waterState.biolQuality && waterState.oilQuality
+                                             && waterState.radQuality">
             <p>Всё в норме. Воду можно пить</p>
          </div>
       </div>

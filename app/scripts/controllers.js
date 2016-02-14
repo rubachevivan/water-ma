@@ -77,14 +77,12 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
                            });
                            if($scope[param + "CurrentMetrics"][0][6] > maximum) {
                                  var obj = dashboardFactory.getQuality();
-                                 obj.$value = 0;
-                                 obj.$save();
+                                 obj[param + "Quality"] = 0;
                                  $scope[param + "Message"] = "Внимание!!! Концентрация превышена";
                            } else {
                                  var obj = dashboardFactory.getQuality();
-                                 obj.$value = 1;
-                                 obj.$save();
-                                 $scope[param + "Message"] = "Конценция в норме."
+                                 obj[param + "Quality"] = 1;
+                                 $scope[param + "Message"] = "Концентрация в норме."
                            }
                         });
                      })
@@ -93,6 +91,26 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
             getChart("biol", 0);
             getChart("rad", 0.1);
             //console.log($scope.radSeries);
+            $scope.oilData = dashboardFactory.getMetricsByWeek("oil");
+            $scope.oilData.$loaded()
+               .then(function(){
+                  $scope.$watchCollection("oilData", function(newValues, oldValues) {
+                     $scope.oilCurrentMetrics = [];
+                     $scope.oilLabels = ["Нефть", "Вода"];
+                     $scope.oilCurrentMetrics.push(+newValues[newValues.length - 1].contents);
+                     $scope.oilCurrentMetrics.push(100 - newValues[newValues.length - 1].contents);
+                     console.log($scope.oilCurrentMetrics[0]);
+                     if($scope.oilCurrentMetrics[0] > 20) {
+                        var obj = dashboardFactory.getQuality();
+                        obj.$value = 
+                        $scope.oilMessage = "Концентрация не в норме.";
+                     }
+                     } else {
+                        var obj = dashboardFactory.getQuality();
+                        $scope.oilMessage = "Концентрация в норме.";
+                     }
+                  })
+               });
 
 
          /*
@@ -123,7 +141,7 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
          $scope.quality.$loaded()
             .then(function() {
                $scope.$watch('quality', function(newVal, oldVal, scope) {
-                  $scope.waterState = newVal.$value;
+                  $scope.waterState = newVal;
                });
             });
          $scope.showWeather = false;
@@ -181,25 +199,22 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
          */
          $scope.posts = newsFactory.getPosts();
 
-         $scope.addPost = function() {
-            $scope.posts.$add({
-               name: $scope.name,
-               description: $scope.description,
-               content: $scope.content,
-               timestamp: Firebase.ServerValue.TIMESTAMP
-            });
-
-            $scope.name = "";
-            $scope.description = "";
-            $scope.content = "";
-         };
       }])
       /*
          controller that operates with new data from send view
+         and set forms clean
       */
 
-      .controller('SendController', ['$scope', 'fb',
-         function($scope, fb) {
-
-         }
-      ]);
+      .controller('SendController', ['$scope', 'dashboardFactory',
+         function($scope, dashboardFactory) {
+            $scope.oilData = dashboardFactory.getMetrics("oil");
+            $scope.addOilData = function() {
+               $scope.oilData.$add({
+                  contents: $scope.oilContents,
+                  comments: $scope.oilComment,
+                  timestamp: Firebase.ServerValue.TIMESTAMP
+               });
+               $scope.oilContents = "";
+               $scope.oilComment = "";
+            }
+         }]);

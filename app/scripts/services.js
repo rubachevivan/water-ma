@@ -24,7 +24,7 @@ app.factory('newsFactory', ['$firebaseArray', 'fb',
          var query = ref.limitToLast(7);
          return $firebaseArray(query);
       };
-      metrics.getQuality = function() {
+      metrics.getQuality = function(param) {
          var ref = new Firebase(fb.url + "metrics/quality");
          return $firebaseObject(ref);
       }

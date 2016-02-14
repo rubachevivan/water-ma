@@ -1,132 +1,134 @@
 <div class="home-container">
-      <div class="widget">
-         <div class="header">
-            <h3>Нефтепродукты</h3>
-         </div>
-         <div class="content">
-            <form>
-               <label>Содержание:
-                  <span class="rangeviz">{{oilcontents + "%"}}</span>
-               </label>
-               <input type="range" class="range" min="0" max="100" ng-model="oilcontents">
-               <label>Комментарий:</label>
-               <input type="text">
-               <button type="submit">Отправить</button>
-            </form>
-         </div>
+   <div class="widget">
+      <div class="header">
+         <h3>Нефтепродукты</h3>
       </div>
+      <div class="content">
+         <form ng-submit="addOilData()">
+            <label>Содержание:
+               <span class="rangeviz">{{oilContents + "%"}}</span>
+            </label>
+            <input type="range" class="range" min="0" max="100" ng-model="oilContents">
+            <label>Комментарий:</label>
+            <input type="text" ng-model="oilComment">
+            <button type="submit">Отправить</button>
+         </form>
+      </div>
+   </div>
    <p style="padding-bottom: 20px"></p>
    <div class="widget">
       <div class="header">
          <h3>Органолептические хар-ки</h3>
       </div>
       <div class="content">
-         <div class="input-group">
-            <h4>Запах:</h4>
-            <label class="md-radio">
-               <input type="radio" name="smell">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Отсутствует
-            </label>
+         <form novalidate>
+            <div class="input-group">
+               <h4>Запах:</h4>
+               <label class="md-radio">
+                  <input type="radio" name="smell">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Отсутствует
+               </label>
 
-            <label class="md-radio">
-               <input type="radio" name="smell">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Слабый
-            </label>
+               <label class="md-radio">
+                  <input type="radio" name="smell">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Слабый
+               </label>
 
-            <label class="md-radio">
-               <input type="radio" name="smell">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Сильный
-            </label>
-         </div>
-         <div class="input-group">
-            <h4>Привкус:</h4>
-            <label class="md-radio">
-               <input type="radio" name="taste">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Отсутствует
-            </label>
+               <label class="md-radio">
+                  <input type="radio" name="smell">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Сильный
+               </label>
+            </div>
+            <div class="input-group">
+               <h4>Привкус:</h4>
+               <label class="md-radio">
+                  <input type="radio" name="taste">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Отсутствует
+               </label>
 
-            <label class="md-radio">
-               <input type="radio" name="taste">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Слабый
-            </label>
+               <label class="md-radio">
+                  <input type="radio" name="taste">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Слабый
+               </label>
 
-            <label class="md-radio">
-               <input type="radio" name="taste">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Сильный
-            </label>
-         </div>
-         <div class="input-group">
-            <h4>Цветность:</h4>
-            <label class="md-radio">
-               <input type="radio" name="color">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               В норме
-            </label>
+               <label class="md-radio">
+                  <input type="radio" name="taste">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Сильный
+               </label>
+            </div>
+            <div class="input-group">
+               <h4>Цветность:</h4>
+               <label class="md-radio">
+                  <input type="radio" name="color">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  В норме
+               </label>
 
-            <label class="md-radio">
-               <input type="radio" name="color">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Опасно
-            </label>
+               <label class="md-radio">
+                  <input type="radio" name="color">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Опасно
+               </label>
 
-            <label class="md-radio">
-               <input type="radio" name="color">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Критично
-            </label>
+               <label class="md-radio">
+                  <input type="radio" name="color">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Критично
+               </label>
 
-         </div>
-         <div class="input-group">
-            <h4>Мутность:</h4>
-            <label class="md-radio">
-               <input type="radio" name="mutn">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Прозрачная
-            </label>
+            </div>
+            <div class="input-group">
+               <h4>Мутность:</h4>
+               <label class="md-radio">
+                  <input type="radio" name="mutn">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Прозрачная
+               </label>
 
-            <label class="md-radio">
-               <input type="radio" name="mutn">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Почти прозрачная
-            </label>
+               <label class="md-radio">
+                  <input type="radio" name="mutn">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Почти прозрачная
+               </label>
 
-            <label class="md-radio">
-               <input type="radio" name="mutn">
-               <span class="md-radio--fake">
-                  <span></span>
-               </span>
-               Мутная
-            </label>
-         </div>
-         <button type="submit">Отправить</button>
+               <label class="md-radio">
+                  <input type="radio" name="mutn">
+                  <span class="md-radio--fake">
+                     <span></span>
+                  </span>
+                  Мутная
+               </label>
+            </div>
+            <button type="submit" ng-click="">Отправить</button>
+         </form>
       </div>
    </div>
 </div>
