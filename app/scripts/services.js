@@ -25,9 +25,13 @@ app.factory('newsFactory', ['$firebaseArray', 'fb',
          return $firebaseArray(query);
       };
       metrics.getQuality = function(param) {
+         var ref = new Firebase(fb.url + "metrics/quality/" + param + "Quality");
+         return $firebaseObject(ref);
+      };
+      metrics.getAllQuality = function() {
          var ref = new Firebase(fb.url + "metrics/quality");
          return $firebaseObject(ref);
-      }
+      };
       return metrics;
    }
 ])

@@ -21,11 +21,11 @@
          <h3>Органолептические хар-ки</h3>
       </div>
       <div class="content">
-         <form novalidate>
+         <form ng-submit="addOrganData()">
             <div class="input-group">
                <h4>Запах:</h4>
                <label class="md-radio">
-                  <input type="radio" name="smell">
+                  <input type="radio" name="smell" ng-model="smell" value="0">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -33,7 +33,7 @@
                </label>
 
                <label class="md-radio">
-                  <input type="radio" name="smell">
+                  <input type="radio" name="smell" ng-model="smell" value="1">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -41,7 +41,7 @@
                </label>
 
                <label class="md-radio">
-                  <input type="radio" name="smell">
+                  <input type="radio" name="smell" ng-model="smell" value="2">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -51,7 +51,7 @@
             <div class="input-group">
                <h4>Привкус:</h4>
                <label class="md-radio">
-                  <input type="radio" name="taste">
+                  <input type="radio" name="taste" ng-model="taste" value="0">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -59,7 +59,7 @@
                </label>
 
                <label class="md-radio">
-                  <input type="radio" name="taste">
+                  <input type="radio" name="taste" ng-model="taste" value="1">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -67,7 +67,7 @@
                </label>
 
                <label class="md-radio">
-                  <input type="radio" name="taste">
+                  <input type="radio" name="taste" ng-model="taste" value="2">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -77,7 +77,7 @@
             <div class="input-group">
                <h4>Цветность:</h4>
                <label class="md-radio">
-                  <input type="radio" name="color">
+                  <input type="radio" name="color" ng-model="colour" value="0">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -85,7 +85,7 @@
                </label>
 
                <label class="md-radio">
-                  <input type="radio" name="color">
+                  <input type="radio" name="color" ng-model="colour" value="1">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -93,7 +93,7 @@
                </label>
 
                <label class="md-radio">
-                  <input type="radio" name="color">
+                  <input type="radio" name="color" ng-model="colour" value="2">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -104,7 +104,7 @@
             <div class="input-group">
                <h4>Мутность:</h4>
                <label class="md-radio">
-                  <input type="radio" name="mutn">
+                  <input type="radio" name="mutn" ng-model="opacity" value="0">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -112,7 +112,7 @@
                </label>
 
                <label class="md-radio">
-                  <input type="radio" name="mutn">
+                  <input type="radio" name="mutn" ng-model="opacity" value="1">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>
@@ -120,7 +120,7 @@
                </label>
 
                <label class="md-radio">
-                  <input type="radio" name="mutn">
+                  <input type="radio" name="mutn" ng-model="opacity" value="2">
                   <span class="md-radio--fake">
                      <span></span>
                   </span>

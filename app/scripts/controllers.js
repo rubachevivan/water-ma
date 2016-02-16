@@ -27,7 +27,7 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
                $scope[param + "Metrics"].$add({
                   contents: rnd,
                   timestamp: Firebase.ServerValue.TIMESTAMP
-               })
+               });
             };
 
 
@@ -76,16 +76,18 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
                               $scope[param + "CurrentMetrics"][0][index] = item.contents;
                            });
                            if($scope[param + "CurrentMetrics"][0][6] > maximum) {
-                                 var obj = dashboardFactory.getQuality();
-                                 obj[param + "Quality"] = 0;
+                                 var obj = dashboardFactory.getQuality(param);
+                                 obj.$value = 0;
+                                 obj.$save();
                                  $scope[param + "Message"] = "Внимание!!! Концентрация превышена";
                            } else {
-                                 var obj = dashboardFactory.getQuality();
-                                 obj[param + "Quality"] = 1;
-                                 $scope[param + "Message"] = "Концентрация в норме."
+                                 var obj = dashboardFactory.getQuality(param);
+                                 obj.$value = 1;
+                                 obj.$save();
+                                 $scope[param + "Message"] = "Концентрация в норме.";
                            }
                         });
-                     })
+                     });
             }
 
             getChart("biol", 0);
@@ -101,17 +103,17 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
                      $scope.oilCurrentMetrics.push(100 - newValues[newValues.length - 1].contents);
                      console.log($scope.oilCurrentMetrics[0]);
                      if($scope.oilCurrentMetrics[0] > 20) {
-                        var obj = dashboardFactory.getQuality();
-                        obj.$value = 
                         $scope.oilMessage = "Концентрация не в норме.";
                      }
-                     } else {
-                        var obj = dashboardFactory.getQuality();
+                     else {
                         $scope.oilMessage = "Концентрация в норме.";
                      }
-                  })
+                  });
                });
-
+         /*
+            organolept parameters query and bla bla
+         */
+         
 
          /*
             adding new news posts to firebase and clearing input fields
@@ -137,7 +139,7 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
             This code is not in the services.js because of asynchronous loading it is not
             showing weather if it loads it in services.js
          */
-         $scope.quality = dashboardFactory.getQuality();
+         $scope.quality = dashboardFactory.getAllQuality();
          $scope.quality.$loaded()
             .then(function() {
                $scope.$watch('quality', function(newVal, oldVal, scope) {
@@ -209,6 +211,15 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
          function($scope, dashboardFactory) {
             $scope.oilData = dashboardFactory.getMetrics("oil");
             $scope.addOilData = function() {
+               if(+$scope.oilContents > 20) {
+                  var obj = dashboardFactory.getQuality("oil");
+                  obj.$value = 0;
+                  obj.$save();
+               } else {
+                  var obj = dashboardFactory.getQuality("oil");
+                  obj.$value = 1;
+                  obj.$save();
+               }
                $scope.oilData.$add({
                   contents: $scope.oilContents,
                   comments: $scope.oilComment,
@@ -216,5 +227,32 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
                });
                $scope.oilContents = "";
                $scope.oilComment = "";
+            };
+            $scope.smell;
+            $scope.taste;
+            $scope.colour;
+            $scope.opacity;
+
+            $scope.organData = dashboardFactory.getMetrics("organ");
+            $scope.addOrganData = function() {
+               if($scope.smell > 2 || $scope.taste > 2 || $scope.colour > 2 || $scope.opacity > 2) {
+                  var obj = dashboardFactory.getQuality("organ");
+                  obj.$value = 0;
+                  obj.$save();
+               } else {
+                  var obj = dashboardFactory.getQuality("organ");
+                  obj.$value = 1;
+                  obj.$save();
+               }
+               $scope.organData.$add({
+                   smell: +$scope.smell,
+                   taste: +$scope.taste,
+                   color: +$scope.colour,
+                   opacity: +$scope.opacity
+               });
+               $scope.smell = "";
+               $scope.taste = "";
+               $scope.colour = "";
+               $scope.opacity = "";
             }
          }]);
