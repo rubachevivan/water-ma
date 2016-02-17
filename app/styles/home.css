@@ -90,6 +90,7 @@ i {
 
 i span {
    margin-left: 20px;
+   display: block;
    color: black;
    font-family: Roboto;
    font-size: 1.2em;

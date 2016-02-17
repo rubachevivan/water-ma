@@ -1,5 +1,16 @@
 "use strict";
 var app = angular.module('waterApp', ['ui.router', 'ngResource', 'firebase', 'chart.js'])
+   .run(function($rootScope, $state, $firebaseAuth) {
+      $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+         var ref = new Firebase("https://water-ma.firebaseio.com/");
+         var authObj = $firebaseAuth(ref);
+         var authData = authObj.$getAuth()
+         if (toState.authenticate && !authData) {
+            $state.transitionTo("home");
+            event.preventDefault();
+         }
+      });
+   })
    .constant("fb", {
       url: "https://water-ma.firebaseio.com/"
    })
@@ -15,17 +26,19 @@ var app = angular.module('waterApp', ['ui.router', 'ngResource', 'firebase', 'ch
                   templateUrl: 'views/home.html',
                   controller: 'HomeController'
                }
-            }
+            },
+            authenticate: false
          })
 
-         .state('post', {
-            url: '/newspost/:id',
+         .state('login', {
+            url: '/login',
             views: {
                'content': {
-                  templateUrl: 'views/post.html',
-                  controller: 'PostController'
+                  templateUrl: 'views/login.html',
+                  controller: 'LoginController'
                }
-            }
+            },
+            authenticate: false
          })
 
          .state('dashboard', {
@@ -38,7 +51,8 @@ var app = angular.module('waterApp', ['ui.router', 'ngResource', 'firebase', 'ch
                   templateUrl: 'views/information.html',
                   controller: 'DashboardController'
                }
-            }
+            },
+            authenticate: true
          })
 
          .state('send', {
@@ -51,7 +65,8 @@ var app = angular.module('waterApp', ['ui.router', 'ngResource', 'firebase', 'ch
                   templateUrl: 'views/send.html',
                   controller: 'SendController'
                }
-            }
+            },
+            authenticate: true
          });
          $urlRouterProvider.otherwise('/');
    })

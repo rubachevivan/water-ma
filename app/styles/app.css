@@ -41,3 +41,12 @@
 .addpost:hover {
    color: #ddd;
 }
+
+.organGood {
+   margin-top: 20px;
+   color: green;
+}
+.organBad {
+   margin-top: 20px;   
+   color: red;
+}

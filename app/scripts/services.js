@@ -32,7 +32,16 @@ app.factory('newsFactory', ['$firebaseArray', 'fb',
          var ref = new Firebase(fb.url + "metrics/quality");
          return $firebaseObject(ref);
       };
+      metrics.getOrgan = function() {
+         var ref = new Firebase(fb.url + "metrics/organ");
+         var query = ref.limitToLast(1);
+         return $firebaseArray(query);
+      }
       return metrics;
    }
 ])
+.factory("loginFactory", ['$firebaseAuth', 'fb', function($firebaseAuth, fb) {
+   var ref = new Firebase(fb.url)
+   return $firebaseAuth(ref);
+}])
 ;

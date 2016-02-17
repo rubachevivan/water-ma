@@ -103,7 +103,7 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
                      $scope.oilCurrentMetrics.push(100 - newValues[newValues.length - 1].contents);
                      console.log($scope.oilCurrentMetrics[0]);
                      if($scope.oilCurrentMetrics[0] > 20) {
-                        $scope.oilMessage = "Концентрация не в норме.";
+                        $scope.oilMessage = "Внимание!!! Концентрация превышена";
                      }
                      else {
                         $scope.oilMessage = "Концентрация в норме.";
@@ -113,7 +113,39 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
          /*
             organolept parameters query and bla bla
          */
-         
+            $scope.organData = dashboardFactory.getOrgan();
+            $scope.organData.$loaded()
+               .then(function() {
+                  console.log($scope.organData);
+                  $scope.$watchCollection("organData", function(newValues, oldValues) {
+                     $scope.colorStyle = "organGood";
+                     $scope.opacityStyle = "organGood";
+                     $scope.smellStyle = "organGood";
+                     $scope.tasteStyle = "organGood";
+
+                     $scope.colour = "Цветность воды в норме";
+                     $scope.opacity = "Вода прозрачная";
+                     $scope.smell = "Запах в порядке";
+                     $scope.taste = "Привкус в порядке";
+
+                     if(newValues[0].color >= 2) {
+                        $scope.colour = "Цветность воды не в порядке";
+                        $scope.colorStyle = "organBad";
+                     }
+                     if(newValues[0].opacity >= 2) {
+                        $scope.opacity = "Мутность высока";
+                        $scope.opacityStyle = "organBad";
+                     }
+                     if(newValues[0].smell >= 2) {
+                        $scope.smell = "Вода имеет неприятный запах";
+                        $scope.smellStyle = "organBad";
+                     }
+                     if(newValues[0].taste >= 2) {
+                        $scope.taste = "Вода имеет неприятный привкус";
+                        $scope.tasteStyle = "organBad";
+                     }
+                  });
+               });
 
          /*
             adding new news posts to firebase and clearing input fields
@@ -255,4 +287,19 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
                $scope.colour = "";
                $scope.opacity = "";
             }
-         }]);
+         }])
+      .controller("LoginController", ['$scope', 'loginFactory', function($scope, loginFactory) {
+         $scope.email;
+         $scope.password;
+         $scope.login = function() {
+            loginFactory.$authWithPassword({
+               email: $scope.email,
+               password: $scope.password
+            }).then(function() {
+               console.log('YEEEY!');
+            }).catch(function(error){
+               console.error("Authentication failed " + error);
+            })
+         }
+      }])
+;

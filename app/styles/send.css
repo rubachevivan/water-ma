@@ -11,7 +11,7 @@ textarea {
    min-height: 60px;
    font-family: Roboto;
 }
-input[type="text"], input[type="date"], input[type="password"], input[type="number"], textarea {
+input[type="text"], input[type="date"], input[type="password"], input[type="number"], input[type="email"], textarea {
    border-radius: 0;
    border-bottom: 2px solid #B6B6B6;
    transition: border-bottom 500ms ease-out;
