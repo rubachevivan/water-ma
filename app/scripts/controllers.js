@@ -79,7 +79,7 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
                                  var obj = dashboardFactory.getQuality(param);
                                  obj.$value = 0;
                                  obj.$save();
-                                 $scope[param + "Message"] = "Внимание!!! Концентрация превышена";
+                                 $scope[param + "Message"] = "Внимание! Концентрация превышена.";
                            } else {
                                  var obj = dashboardFactory.getQuality(param);
                                  obj.$value = 1;
@@ -103,7 +103,7 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
                      $scope.oilCurrentMetrics.push(100 - newValues[newValues.length - 1].contents);
                      console.log($scope.oilCurrentMetrics[0]);
                      if($scope.oilCurrentMetrics[0] > 20) {
-                        $scope.oilMessage = "Внимание!!! Концентрация превышена";
+                        $scope.oilMessage = "Внимание! Концентрация превышена.";
                      }
                      else {
                         $scope.oilMessage = "Концентрация в норме.";

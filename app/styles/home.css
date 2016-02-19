@@ -88,12 +88,12 @@ i {
    color:  rgb(124, 77, 255);
 }
 
-i span {
+.weather span {
    margin-left: 20px;
    display: block;
    color: black;
    font-family: Roboto;
-   font-size: 1.2em;
+   font-size: 120px;
 }
 
 .widget .weather p {
