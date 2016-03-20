@@ -187,7 +187,7 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'dashboardFactory
          function getCurrentWeather(position) {
             longitude = position.coords.longitude;
             latitude = position.coords.latitude;
-            url = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=44db6a862fba0b067b1930da0d769e98";
+            url = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=e533bf08b8165b80eb6f417c66f0ab0b";
             console.log("current position is: " + latitude + " " + longitude);
             $resource(url)
                .get()
